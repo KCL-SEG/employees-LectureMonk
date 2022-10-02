@@ -1,6 +1,7 @@
 """Employee pay calculator."""
 """ENTER YOUR SOLUTION HERE!"""
 
+# Super employee class
 class Employee:
     def __init__(self, name):
         self.name = name
@@ -11,6 +12,32 @@ class Employee:
     def __str__(self):
         return self.name
 
+# Employee on a salary without bonus
+class salary_employee(Employee):
+    def __init__(self, name, salary):
+        super().__init__(name)
+        self.salary = salary
+
+# Employee on a contract without bonus
+class contract_employee(Employee):
+    def __init__(self, name, hours, hourly_rate):
+        super().__init__(name)
+        self.hours = hours
+        self.hourly_rate = hourly_rate
+
+# Employee on a salary with a bonus
+# Assumes a bonus comission unless contracts specificed
+class salary_employee_bonus(salary_employee):
+    def __init__(self, name, salary, bonus, contracts=0):
+        super().__init__(name, salary)
+        self.contracts = contracts
+        self.bonus = bonus
+
+class contract_employee_bonus(contract_employee):
+    def __init__(self, name, hours, hourly_rate, bonus, contracts=0):
+        super().__init__(name, hours, hourly_rate)
+        self.contracts = contracts
+        self.bonus = bonus
 
 # Billie works on a monthly salary of 4000.  Their total pay is 4000.
 billie = Employee('Billie')
